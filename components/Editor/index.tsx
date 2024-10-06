@@ -1,6 +1,7 @@
 'use client';
 
 import { ModeToggle } from '@/components/theme/modeToggle';
+import ActiveImage from '../ActiveImage';
 import Layers from '../layers/Layers';
 import ImageUpload from '../upload/ImageUpload';
 
@@ -13,6 +14,7 @@ const Editor = () => {
         </div>
       </div>
       <ImageUpload />
+      <ActiveImage />
       <Layers />
     </div>
   );

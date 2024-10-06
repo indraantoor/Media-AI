@@ -1,11 +1,18 @@
 'use client';
 
 import { Card, CardContent } from '@/components/ui/card';
+import { useImageStore } from '@/lib/imageStore';
+import { useLayerStore } from '@/lib/layerStore';
 import { cn } from '@/lib/utils';
 import { uploadImage } from '@/server/uploadImage';
 import { useDropzone } from 'react-dropzone';
 
 const ImageUpload = () => {
+  const setGenerating = useImageStore((state) => state.setGenerating);
+  const activeLayer = useLayerStore((state) => state.activeLayer);
+  const updateLayer = useLayerStore((state) => state.updateLayer);
+  const setActiveLayer = useLayerStore((state) => state.setActiveLayer);
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     maxFiles: 1,
     accept: {
@@ -20,39 +27,71 @@ const ImageUpload = () => {
         const file = acceptedFiles[0];
         formData.append('image', file);
         const objectUrl = URL.createObjectURL(file);
+        setGenerating(true);
 
+        updateLayer({
+          id: activeLayer.id,
+          url: objectUrl,
+          width: 0,
+          height: 0,
+          name: 'uploading',
+          publicId: '',
+          format: '',
+          resourceType: 'image',
+        });
+
+        setActiveLayer(activeLayer.id);
         // TODO: state management with handling layers
 
         const res = await uploadImage({ image: formData });
 
-        console.log(res, objectUrl);
+        if (res?.data?.success) {
+          updateLayer({
+            id: activeLayer.id,
+            url: res.data.success.url,
+            width: res.data.success.width,
+            height: res.data.success.height,
+            name: res.data.success.original_filename,
+            publicId: res.data.success.public_id,
+            format: res.data.success.format,
+            resourceType: res.data.success.resource_type,
+          });
+
+          setActiveLayer(activeLayer.id);
+          setGenerating(false);
+        }
+
+        if (res?.data?.error) {
+          setGenerating(false);
+        }
       }
     },
   });
 
-  return (
-    <Card
-      className={cn(
-        'transition-all ease-in-out hover:cursor-pointer hover:border-primary hover:bg-secondary',
-        `${isDragActive ? 'animate-pulse border-primary bg-secondary' : ''}`
-      )}
-      {...getRootProps()}
-    >
-      <CardContent className="flex h-full flex-col items-center justify-center px-2 py-24 text-xs">
-        <input type="text" {...getInputProps()} />
-        <div className="flex flex-col items-center justify-center gap-4">
-          <p className="text-2xl text-muted-foreground">
-            {isDragActive
-              ? 'Drop your image here'
-              : 'Start by uploading an image'}
-          </p>
-          <p className="text-muted-foreground">
-            Supported formats .jpeg .png .webp .jpg
-          </p>
-        </div>
-      </CardContent>
-    </Card>
-  );
+  if (!activeLayer.url)
+    return (
+      <Card
+        className={cn(
+          'transition-all ease-in-out hover:cursor-pointer hover:border-primary hover:bg-secondary',
+          `${isDragActive ? 'animate-pulse border-primary bg-secondary' : ''}`
+        )}
+        {...getRootProps()}
+      >
+        <CardContent className="flex h-full flex-col items-center justify-center px-2 py-24 text-xs">
+          <input type="text" {...getInputProps()} />
+          <div className="flex flex-col items-center justify-center gap-4">
+            <p className="text-2xl text-muted-foreground">
+              {isDragActive
+                ? 'Drop your image here'
+                : 'Start by uploading an image'}
+            </p>
+            <p className="text-muted-foreground">
+              Supported formats .jpeg .png .webp .jpg
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+    );
 };
 
 export default ImageUpload;

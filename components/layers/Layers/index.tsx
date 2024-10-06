@@ -10,6 +10,7 @@ import { useImageStore } from '@/lib/imageStore';
 import { useLayerStore } from '@/lib/layerStore';
 import { cn } from '@/lib/utils';
 import { Layers2 } from 'lucide-react';
+import ImageLayer from '../ImageLayer';
 
 export default function Layers() {
   const layers = useLayerStore((state) => state.layers);
@@ -49,6 +50,8 @@ export default function Layers() {
                     New Layer
                   </p>
                 ) : null}
+
+                <ImageLayer layer={layer} />
               </div>
             </div>
           </div>

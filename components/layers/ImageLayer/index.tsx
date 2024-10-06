@@ -6,9 +6,9 @@ import Image from 'next/image';
 export default function ImageLayer({ layer }: { layer: Layer }) {
   if (layer.url && layer.name) {
     return (
-      <div className="flex h-12 w-12 items-center justify-center">
+      <div className="flex h-12 w-full items-center gap-2">
         <Image
-          className="h-full w-full rounded-sm object-contain"
+          className="h-full w-full max-w-12 rounded-sm object-contain"
           alt={layer.name}
           src={layer.format == 'mp4' ? layer.poster || layer.url : layer.url}
           width={50}
@@ -16,7 +16,7 @@ export default function ImageLayer({ layer }: { layer: Layer }) {
         />
         <div>
           <p>
-            {layer.name.slice(0, 15)}.${layer.format}
+            {layer.name.slice(0, 15)}.{layer.format}
           </p>
         </div>
       </div>
