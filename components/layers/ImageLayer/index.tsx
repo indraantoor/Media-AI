@@ -15,8 +15,8 @@ export default function ImageLayer({ layer }: { layer: Layer }) {
           height={50}
         />
         <div>
-          <p>
-            {layer.name.slice(0, 15)}.{layer.format}
+          <p className="text-sm">
+            {layer.name.slice(0, 8)}.{layer.format}
           </p>
         </div>
       </div>
