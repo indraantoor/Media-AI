@@ -22,7 +22,7 @@ export default function Layers() {
 
   return (
     <Card className="scrollbar-thin scrollbar-track-secondary scrollbar-thumb-primary scrollbar-thumb-rounded-full scrollbar-track-rounded-full relative flex shrink-0 basis-[320px] flex-col overflow-x-hidden overflow-y-scroll shadow-2xl">
-      <CardHeader>
+      <CardHeader className="sticky top-0 z-50 min-h-24 bg-card px-4 py-6 shadow-sm">
         <div>
           <CardTitle className="text-sm">
             {activeLayer.name || 'Layers'}

@@ -3,7 +3,7 @@
 import { ModeToggle } from '@/components/theme/modeToggle';
 import ActiveImage from '../ActiveImage';
 import Layers from '../layers/Layers';
-import ImageUpload from '../upload/ImageUpload';
+import UploadForm from '../upload/UploadForm';
 
 const Editor = () => {
   return (
@@ -13,7 +13,7 @@ const Editor = () => {
           <ModeToggle />
         </div>
       </div>
-      <ImageUpload />
+      <UploadForm />
       <ActiveImage />
       <Layers />
     </div>
