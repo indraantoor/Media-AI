@@ -16,7 +16,9 @@ import LayerInfo from '../LayerInfo';
 export default function Layers() {
   const layers = useLayerStore((state) => state.layers);
   const activeLayer = useLayerStore((state) => state.activeLayer);
+  const setActiveLayer = useLayerStore((state) => state.setActiveLayer);
   const generating = useImageStore((state) => state.generating);
+  const addLayer = useLayerStore((state) => state.addLayer);
 
   return (
     <Card className="scrollbar-thin scrollbar-track-secondary scrollbar-thumb-primary scrollbar-thumb-rounded-full scrollbar-track-rounded-full relative flex shrink-0 basis-[320px] flex-col overflow-x-hidden overflow-y-scroll shadow-2xl">
@@ -41,8 +43,13 @@ export default function Layers() {
               'cursor-pointer border border-transparent ease-in-out hover:bg-secondary',
               {
                 'animate-pulse': generating,
+                'border-primary': activeLayer.id === layer.id,
               }
             )}
+            onClick={() => {
+              if (generating) return;
+              setActiveLayer(layer.id);
+            }}
           >
             <div className="relative flex items-center p-4">
               <div className="flex h-8 w-full items-center justify-between gap-2">
@@ -60,7 +67,21 @@ export default function Layers() {
         ))}
       </CardContent>
       <div className="sticky bottom-0 flex shrink-0 gap-2 bg-card">
-        <Button className="flex w-full gap-2" variant={'outline'}>
+        <Button
+          onClick={() => {
+            addLayer({
+              id: crypto.randomUUID(),
+              url: '',
+              height: 0,
+              width: 0,
+              publicId: '',
+              name: '',
+              format: '',
+            });
+          }}
+          className="flex w-full gap-2"
+          variant={'outline'}
+        >
           <span>Create Layer</span>
           <Layers2 size={18} className="text-secondary-foreground" />
         </Button>
