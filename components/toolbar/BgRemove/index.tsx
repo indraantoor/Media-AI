@@ -1,8 +1,6 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import {
   Popover,
   PopoverContent,
@@ -10,79 +8,71 @@ import {
 } from '@/components/ui/popover';
 import { useImageStore } from '@/lib/imageStore';
 import { useLayerStore } from '@/lib/layerStore';
-import { genRemove } from '@/server/genRemove';
+import { bgRemoval } from '@/server/bgRemove';
 
-import { Eraser } from 'lucide-react';
-import { useState } from 'react';
+import { Image } from 'lucide-react';
 
-export default function GenRemove() {
+export default function BgRemove() {
   const setGenerating = useImageStore((state) => state.setGenerating);
-  const generating = useImageStore((state) => state.generating);
   const activeLayer = useLayerStore((state) => state.activeLayer);
   const addLayer = useLayerStore((state) => state.addLayer);
   const setActiveLayer = useLayerStore((state) => state.setActiveLayer);
-
-  const [activeTag, setActiveTag] = useState('');
+  const generating = useImageStore((state) => state.generating);
 
   return (
     <Popover>
       <PopoverTrigger disabled={!activeLayer?.url} asChild>
         <Button variant="outline" className="w-full p-8">
           <span className="flex flex-col items-center justify-center gap-1 text-xs font-medium">
-            Content Aware <Eraser size={20} />
+            BG Removal <Image size={20} />
           </span>
         </Button>
       </PopoverTrigger>
 
       <PopoverContent className="w-full">
         <div>
-          <h3>Smart AI Remove</h3>
+          <h3>Background Removal</h3>
           <p className="text-sm text-muted-foreground">
-            Generative Remove any part of the image
+            Remove the background of an image with one simple click
           </p>
         </div>
 
-        <div className="grid grid-cols-3 items-center gap-4">
-          <Label htmlFor="selection">Selection</Label>
-          <Input
-            className="col-span-2 h-8"
-            value={activeTag}
-            onChange={(e) => {
-              setActiveTag(e.target.value);
-            }}
-          />
-        </div>
-
         <Button
-          disabled={!activeLayer?.url || !activeTag || generating}
+          disabled={!activeLayer?.url || generating}
           onClick={async () => {
             const newLayerId = crypto.randomUUID();
 
             setGenerating(true);
 
-            const res = await genRemove({
-              prompt: activeTag,
+            const res = await bgRemoval({
               activeImage: activeLayer.url!,
+              format: activeLayer.format!,
             });
 
+            console.log('Res', { res });
+
             if (res?.data?.success) {
-              setGenerating(false);
               addLayer({
                 id: newLayerId,
                 url: res.data.success,
-                format: activeLayer.format,
+                format: 'png',
                 height: activeLayer.height,
                 width: activeLayer.width,
-                name: 'genRemoved' + activeLayer.name,
+                name: 'bgRemoved' + activeLayer.name,
                 publicId: activeLayer.publicId,
                 resourceType: 'image',
               });
               setActiveLayer(newLayerId);
+              setGenerating(false);
+            }
+
+            if (res?.serverError) {
+              setGenerating(false);
             }
           }}
           className="mt-4 w-full"
         >
-          {generating ? 'Processing...' : 'Magic Remove'}
+          {generating ? 'Removing...' : 'Remove Background'}
         </Button>
       </PopoverContent>
     </Popover>
