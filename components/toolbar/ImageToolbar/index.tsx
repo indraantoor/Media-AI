@@ -1,5 +1,6 @@
 import BgRemove from '../BgRemove';
 import BgReplace from '../BgReplace';
+import GenerativeFill from '../GenerativeFill';
 import GenRemove from '../GenRemove';
 
 export default function ImageTools() {
@@ -8,6 +9,7 @@ export default function ImageTools() {
       <GenRemove />
       <BgRemove />
       <BgReplace />
+      <GenerativeFill />
     </div>
   );
 }
