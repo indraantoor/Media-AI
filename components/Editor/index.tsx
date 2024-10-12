@@ -4,6 +4,7 @@ import { ModeToggle } from '@/components/theme/modeToggle';
 import { useLayerStore } from '@/lib/layerStore';
 import ActiveImage from '../ActiveImage';
 import Layers from '../layers/Layers';
+import Loading from '../LoadingScreen';
 import ImageTools from '../toolbar/ImageToolbar';
 import UploadForm from '../upload/UploadForm';
 
@@ -20,6 +21,7 @@ const Editor = () => {
           {activeLayer.resourceType == 'image' ? <ImageTools /> : null}
         </div>
       </div>
+      <Loading />
       <UploadForm />
       <ActiveImage />
       <Layers />
