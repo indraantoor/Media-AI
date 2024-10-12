@@ -4,7 +4,9 @@ import { Card, CardContent } from '@/components/ui/card';
 import { useImageStore } from '@/lib/imageStore';
 import { useLayerStore } from '@/lib/layerStore';
 import { cn } from '@/lib/utils';
+import imageUploadAnimation from '@/public/animations/imageUpload.json';
 import { uploadImage } from '@/server/uploadImage';
+import Lottie from 'lottie-react';
 import { useDropzone } from 'react-dropzone';
 
 const ImageUpload = () => {
@@ -41,7 +43,6 @@ const ImageUpload = () => {
         });
 
         setActiveLayer(activeLayer.id);
-        // TODO: state management with handling layers
 
         const res = await uploadImage({ image: formData });
 
@@ -80,6 +81,7 @@ const ImageUpload = () => {
         <CardContent className="flex h-full flex-col items-center justify-center px-2 py-24 text-xs">
           <input type="text" {...getInputProps()} />
           <div className="flex flex-col items-center justify-center gap-4">
+            <Lottie className="h-48" animationData={imageUploadAnimation} />
             <p className="text-2xl text-muted-foreground">
               {isDragActive
                 ? 'Drop your image here'
