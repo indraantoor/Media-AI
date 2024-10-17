@@ -1,6 +1,7 @@
 'use client';
 
 import { useLayerStore } from '@/lib/layerStore';
+import SmartCrop from '../SmartCrop';
 import VideoTranscription from '../VideoTranscription';
 
 export default function VideoTools() {
@@ -8,8 +9,9 @@ export default function VideoTools() {
 
   if (activeLayer.resourceType === 'video') {
     return (
-      <div>
+      <div className="flex w-full flex-col gap-4">
         <VideoTranscription />
+        <SmartCrop />
       </div>
     );
   }
