@@ -5,6 +5,7 @@ import { useLayerStore } from '@/lib/layerStore';
 import ActiveImage from '../ActiveImage';
 import Layers from '../layers/Layers';
 import Loading from '../LoadingScreen';
+import ExportAsset from '../toolbar/Export';
 import ImageTools from '../toolbar/ImageToolbar';
 import VideoTools from '../toolbar/VideoToolbar';
 import UploadForm from '../upload/UploadForm';
@@ -21,6 +22,7 @@ const Editor = () => {
         <div className="flex flex-col gap-4">
           {activeLayer.resourceType == 'image' ? <ImageTools /> : null}
           {activeLayer.resourceType == 'video' ? <VideoTools /> : null}
+          <ExportAsset resource={activeLayer.resourceType!} />
         </div>
       </div>
       <Loading />
