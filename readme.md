@@ -43,7 +43,7 @@
 
 ## About The Project
 
-**Media AI** is a tool designed to simplify the process of editing images and videos using artificial intelligence. It offers two key functionalities: one for images and one for videos, making media editing faster and more efficient.
+**Media AI** is a tool designed to simplify the process of editing images and videos using artificial intelligence. It offers functionalities for images and videos, making media editing faster and more efficient.
 
 For **images**, Media AI allows you to:
 
