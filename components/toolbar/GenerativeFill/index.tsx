@@ -123,7 +123,7 @@ export default function GenerativeFill() {
           <div className="pb-4">
             <h3>Generative Fill</h3>
             <p className="text-sm text-muted-foreground">
-              Remove the background of an image with one simple click
+              Expand your photo using AI.
             </p>
           </div>
           {activeLayer.width && activeLayer.height ? (
