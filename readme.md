@@ -15,6 +15,11 @@
   </p>
 </div>
 
+<img width="1786" alt="Screenshot 2024-10-19 at 5 41 57 PM" src="https://github.com/user-attachments/assets/297135db-ff03-4d7b-bc85-d8d85ee9c479">
+
+<img width="1786" alt="Screenshot 2024-10-19 at 5 42 34 PM" src="https://github.com/user-attachments/assets/364d6c6e-3c16-4756-9a1c-906f48805ece">
+
+
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -184,28 +189,40 @@ To get started with any feature, click the "Upload" button to select and upload 
 ### Image Features
 
 - **Smart AI Remove**:
+<img width="1786" alt="Screenshot 2024-10-19 at 6 52 18 PM" src="https://github.com/user-attachments/assets/1d3ce2ed-5107-44dd-a0cd-257143357662">
+<img width="1786" alt="Screenshot 2024-10-19 at 6 52 33 PM" src="https://github.com/user-attachments/assets/d8cd3ca9-3ea3-4443-8a68-6d4c28a94e33">
 
   1. Upload your image.
   2. Enter the description of the part as a prompt. The AI will process the request and remove the selected part seamlessly.
 
 - **Background Removal**:
+<img width="1786" alt="Screenshot 2024-10-19 at 5 41 57 PM" src="https://github.com/user-attachments/assets/297135db-ff03-4d7b-bc85-d8d85ee9c479">
+<img width="1786" alt="Screenshot 2024-10-19 at 6 40 33 PM" src="https://github.com/user-attachments/assets/981c2a41-5d2f-4372-9a23-86115b60499d">
 
   1. Upload your image.
   2. Click the "Remove Background" button. The AI will automatically eliminate the background, leaving your subject intact.
 
 - **Generative Background Replace**:
+<img width="1786" alt="Screenshot 2024-10-19 at 6 43 11 PM" src="https://github.com/user-attachments/assets/a8cae96c-47a1-4af3-acc6-f1218f365189">
+<img width="1786" alt="Screenshot 2024-10-19 at 6 44 04 PM" src="https://github.com/user-attachments/assets/77130376-09e1-443a-9ecd-15a307d646f8">
 
   1. Upload your image.
   2. Remove the background using the Background Removal feature.
   3. Click on "Replace Background" to generate and insert a new AI Created background which was generated using your prompt.
 
 - **Generative Fill**:
+<img width="1786" alt="Screenshot 2024-10-19 at 6 45 59 PM" src="https://github.com/user-attachments/assets/d7623149-3397-4d87-aeb9-6f13ae96c6f7">
+<img width="1786" alt="Screenshot 2024-10-19 at 6 46 14 PM" src="https://github.com/user-attachments/assets/7fbc7057-02ce-48f1-8be9-bb0512aa7eff">
+<img width="1786" alt="Screenshot 2024-10-19 at 6 46 55 PM" src="https://github.com/user-attachments/assets/7b10ebe0-0d80-4100-879b-527114ce293e">
+
 
   1. Upload your image.
   2. Specify the areas to be modified, and adjust the height and width as needed.
   3. The AI will expand the image according to your specifications, by smartly filling out the details using AI to expand the image.
 
 - **AI Extract**:
+<img width="1786" alt="Screenshot 2024-10-19 at 6 54 58 PM" src="https://github.com/user-attachments/assets/10eb67ce-26dd-4ebd-bb99-396939b00d5b">
+<img width="1786" alt="Screenshot 2024-10-19 at 6 55 10 PM" src="https://github.com/user-attachments/assets/bed6bf93-bc47-4502-9659-42839259e4a6">
 
   1. Upload your image.
   2. Choose the "Extract" option.
@@ -213,13 +230,14 @@ To get started with any feature, click the "Upload" button to select and upload 
   4. The selected areas will be extracted based on your choice.
 
 - **Compare Slider**:
+<img width="1786" alt="Screenshot 2024-10-19 at 6 56 11 PM" src="https://github.com/user-attachments/assets/8bb4ccc7-10ce-48bc-852e-bf8436f74f89">
   1. Upload the original and modified images.
   2. Use the compare slider to visualize the differences between the two images, allowing you to see the impact of the edits.
 
 ### Video Features
 
 - **AI Video Transcription**:
-
+<img width="1786" alt="Screenshot 2024-10-19 at 5 42 34 PM" src="https://github.com/user-attachments/assets/364d6c6e-3c16-4756-9a1c-906f48805ece">
   1. Upload your video.
   2. Click the "Transcribe" button. The AI will generate and display the transcription of your video on your video.
 
